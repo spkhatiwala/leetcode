@@ -43,12 +43,17 @@ public class CycleInDirectedGraph {
             if(currentlyExplored[vertex] )
                 return true;
             visited[vertex] = true;
+
+            //set currentlyExplored to true
             currentlyExplored[vertex] = true;
+
             LinkedList<Integer> adjacencyList = adjNodeList[vertex];
             for(Integer adjNode: adjacencyList){
                 if( recurIsCyclic(adjNode, currentlyExplored, visited))
                     return true;
             }
+            //set currentlyExplored to false... done exploring this node
+            //now going to its siblings or cousins.
             currentlyExplored[vertex] = false;
             return false;
         }
