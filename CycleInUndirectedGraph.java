@@ -21,6 +21,9 @@ public class CycleInUndirectedGraph {
             LinkedList<Integer> adjacencyList = adjacencyLists[vertex];
             visited[vertex] =true;
             for(int adjNode: adjacencyList){
+                //for adjacent nodes of vertex 1 of them will be parent
+                //we want to skip that node since it is already visited.
+                //any other node if visited then it is cycle.
                 if(adjNode == parent)
                     continue;
                 if(visited[adjNode])
@@ -35,6 +38,7 @@ public class CycleInUndirectedGraph {
             for (int i = 0; i < numOfVertices; i++)
                 visited[i] = false;
             for(int i=0; i< numOfVertices; i++){
+                //you go thru all nodes to take care of disjoint graphs
                 if(!visited[i] && recursiveIsCyclic(visited, i, -1 ))
                     return true;
             }
