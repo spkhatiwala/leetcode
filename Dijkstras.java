@@ -4,6 +4,18 @@ import java.util.List;
 import java.util.Map;
 
 public class Dijkstras {
+    //Dijkstras algorithm works with relaxation.
+    //update path
+    //RELAXATION
+    //if(dist[u] + cost[u,v] < dist[v])
+    //          dist[v] = dist[u] + cost[u,v]
+    //first set the dist of directly connected nodes.
+    //not connected nodes dist is infinity
+    //The algorithm is
+    //1] pick the min dist node.
+    //2] perform relaxation
+
+
     Graph graph;
     static class Graph
     {
@@ -41,19 +53,14 @@ public class Dijkstras {
 
 
     int minDistanceNode(Map<Integer, ParentDistPair> distMap, boolean[] visited ){
-        ParentDistPair minParentDistPair = null;
+        int minDist = Integer.MAX_VALUE;
         int minNode = -1;
         for( Map.Entry<Integer, ParentDistPair> entry: distMap.entrySet()){
             int node = entry.getKey();
             ParentDistPair parentDistPair = entry.getValue();
             if(!visited[node] ){
-                if(minParentDistPair == null) {
-                    minParentDistPair = parentDistPair;
+                if(parentDistPair.dist != Integer.MAX_VALUE && parentDistPair.dist< minDist)
                     minNode = node;
-                }else if(minParentDistPair.dist > parentDistPair.dist){
-                    minParentDistPair = parentDistPair;
-                    minNode = node;
-                }
             }
         }
         return minNode;
@@ -73,6 +80,8 @@ public class Dijkstras {
             int minNode = minDistanceNode(distMap, visited);
             visited[minNode] = true;
             List<NodeWeightPair> adjacencyList = g.map.get(minNode);
+
+            //Relaxation
             for(NodeWeightPair nodeWeightPair : adjacencyList){
                 int adjacentNodeId = nodeWeightPair.nodeId;
                 int weight = nodeWeightPair.weight;
