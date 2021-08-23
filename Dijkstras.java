@@ -12,8 +12,8 @@ public class Dijkstras {
     //first set the dist of directly connected nodes.
     //not connected nodes dist is infinity
     //The algorithm is
-    //1] pick the min dist node.
-    //2] perform relaxation
+    //1] pick the min dist node from not visited nodes.
+    //2] perform relaxation of all the connected nodes of minDistNode
 
 
     Graph graph;
