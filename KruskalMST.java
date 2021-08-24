@@ -57,7 +57,8 @@ public class KruskalMST {
             int parentSrc = disjointSet.Find(edge.src);
             int parentDest = disjointSet.Find(edge.dest);
             if(parentSrc == parentDest){
-                continue;
+                //continue;
+                //do nothing
             }else{
                 disjointSet.Union(parentSrc, parentDest);
                 mstList.add(edge);
