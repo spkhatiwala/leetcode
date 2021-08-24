@@ -3,7 +3,7 @@ import java.util.*;
 public class KruskalMST {
     /**
      * Kruskal Algorithm.
-     * Find the edge which is least weight.
+     * Find the edge which is the least weight.
      * If the src or dest of edge is not already part of MST add the edge to MST
      * else skip that edge since it will create cycle. Tree doesn't contain cycle.
      * Use DisjointSet to find out if the src or dest is already part of MST.
